@@ -2,16 +2,15 @@
 	<div class="form-row">
 		<div class="form-group col-md">
 			<label for="cedula">Cédula cliente</label>
-      <input type="number" class="form-control" id="cedula">
+      <input type="number" [(ngModel)]="registro?.cliente.cedula" class="form-control" name="cedula" id="cedula">
     </div>
     <div class="form-group col-md">
       <label for="cliente">Nombre cliente</label>
-      <input type="text" class="form-control" id="cliente">
+      <input type="text" [(ngModel)]="registro?.cliente.nombre"  class="form-control" name="cliente" id="cliente">
     </div>
-
     <div class="form-group col-md">
-      <label for="inputEmail4">Fecha</label>
-      <input type="date" class="form-control" id="inputEmail4">
+      <label for="fecha">Fecha</label>
+      <input type="date" [(ngModel)]="registro.fecha"  class="form-control" name="fecha" id="fecha">
     </div>
   </div>
 
@@ -23,21 +22,30 @@
     <div class="form-row">
 		<div class="form-group col-md">
 			<label for="inputEmail4">Fruta</label>
-      <select class="form-control"></select>
+      <select required class="form-control" [(ngModel)]="producto.tipoFruta" name="registro.tipoFruta" >
+          <option *ngFor="let fruta of frutas" [ngValue]="fruta">
+              {{fruta}}
+          </option>
+      </select>
+
     </div>
     <div class="form-group col-md">
       <label for="inputPassword4">Variedad</label>
-     <select class="form-control"></select>
+    <select required class="form-control" [(ngModel)]="producto.tipoVariedad" name="registro.tipoVariedad">
+          <option *ngFor="let variedad of variedades" [ngValue]="variedad">
+              {{variedad}}
+          </option>
+      </select>
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputEmail4"># Kilos</label>
-      <input type="number" class="form-control" id="inputEmail4">
+      <input required type="number" class="form-control" name="inputEmail4" id="inputEmail4" [(ngModel)]="producto.kilos">
     </div>
 
     <div class="form-group col-md-2">
-      <label for="inputEmail4">*</label>
-      <a href="#" class="btn btn-primary form-control">Agregar</a>
+      <label for="inputEmail5">*</label>
+      <button class="btn btn-primary form-control" (click)="agregarProducto()" name="inputEmail5" id="inputEmail5">Agregar</button>
     </div>
   </div>
  
@@ -63,11 +71,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let producto of registro.productos">
       <th>1</th>
-      <td>Aguacate</td>
-      <td>Hass</td>
-      <td>115</td>
+      <td>{{producto.tipoFruta}}</td>
+      <td>{{producto.tipoVariedad}}</td>
+      <td>{{producto.kilos}}</td>
     </tr>
   </tbody>
 </table>

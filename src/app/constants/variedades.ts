@@ -1,0 +1,1 @@
+export const VARIEDADES = ['Hass','Colin reed'];

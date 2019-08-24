@@ -4,15 +4,15 @@ import { RegistroComponent } from './components/registro/registro.component';
 
 const APP_ROUTES: Routes = [
   {
-    path: 'home',
+    path: 'registro',
     component: RegistroComponent
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'registro',
     pathMatch: 'full'
   },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' }
+  { path: '**', redirectTo: 'registro', pathMatch: 'full' }
 ];
 
 export const app_routing = RouterModule.forRoot(APP_ROUTES, { useHash: true });
